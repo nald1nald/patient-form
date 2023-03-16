@@ -153,4 +153,6 @@ window.onload = function() {
     let patientForm = document.getElementById(`patientForm`);
     patientForm.onsubmit = savePatientForm; 
     
+    let today = new Date().toISOString().split(`T`)[0];
+    document.getElementsByName(`birthDate`)[0].setAttribute(`max`, today);
 }
