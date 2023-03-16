@@ -2,6 +2,16 @@
 // let patientArray = [];
 // console.log(patientArray)
 
+function medInputEnable() {
+  let medsInput = document.getElementById(`meds`);
+  medsInput.disabled = false;
+}
+
+function medInputDisable() {
+  let medsInput = document.getElementById(`meds`);
+  medsInput.disabled = true;
+}
+
 function savePatientForm() {
     let fName = document.getElementById(`fName`).value;
     let mName = document.getElementById(`mName`).value;
@@ -30,11 +40,18 @@ function savePatientForm() {
     }
     
     let takeMedsRadio = document.querySelector(`input[name="yesorno"]:checked`);
-    let takeMeds = "";
+    let takeMeds = ``;
 
     if (takeMedsRadio && takeMedsRadio.value === `yes`) {
         takeMeds = document.getElementById(`meds`).value;
     }
+      
+    
+    
+
+    
+    
+    
 
     let patient = {
         patientId: Date.now(),
@@ -55,6 +72,7 @@ function savePatientForm() {
 }
 
 
+
   
 // Form Validation
 let form = document.getElementById(`patientForm`);
@@ -62,40 +80,49 @@ let form = document.getElementById(`patientForm`);
 form.addEventListener(`submit`, function(event) {
     event.preventDefault();
     
+    let fName = document.getElementById(`fName`);
+    let lName = document.getElementById(`lName`);
+    let address = document.getElementById(`address`);
+
+    let fNameError = document.getElementById(`fNameError`);
+    let lNameError = document.getElementById(`lNameError`);
+    let addressError = document.getElementById(`addressError`);
+
+    fNameError.textContent = ``;
+    lNameError.textContent = ``;
+    addressError.textContent = ``;
+
     if (fName.value.trim() === ``) {
-      alert(`First name is required.`);
-      fName.focus();
-      return false;
-    }
-  
-    
-    if (lName.value.trim() === ``) {
-      alert(`Last name is required.`);
-      lName.focus();
-      return false;
+        fNameError.textContent = ` First name is required.`;
+        fNameError.style.color = `red`;
+        fName.focus();
+        return false;
     }
 
+    if (lName.value.trim() === ``) {
+        lNameError.textContent = ` Last name is required.`;
+        lNameError.style.color = `red`;
+        lName.focus();
+        return false;
+    }
 
     if (address.value.trim() === ``) {
-        alert(`Address is required.`);
-        address.focus();
-        return false;
+      addressError.textContent = ` Address is required.`;
+      addressError.style.color = `red`;
+      address.focus();
+      return false;
     }
   
-    
     if (birthDateValue == 'Invalid Date') {
-        alert('Please enter a valid date.');
+        errorMessage += `Please enter a valid date.<br>`;
         birthDateInput.focus();
-        return false;
     }
 
     if (birthDateValue < maxDate || birthDateValue > maxDate) {
-        alert('Birth date must be between January 1, 1900 and today.');
+        errorMessage += `Birth date must be between January 1, 1900 and today.<br>`;
         birthDateInput.focus();
-        return false;
     }
   
-    
     let isGenderSelected = false;
     for (let i = 0; i < gender.length; i++) {
       if (gender[i].checked) {
@@ -104,24 +131,26 @@ form.addEventListener(`submit`, function(event) {
       }
     }
     if (!isGenderSelected) {
-      alert(`Gender is required.`);
+      errorMessage += `Gender is required.<br>`;
       gender[0].focus();
-      return false;
     }
   
-    
     if (mobileNum.value.trim() === ``) {
-      alert(`Mobile number is required.`);
+      errorMessage += `Mobile number is required.<br>`;
       mobileNum.focus();
-      return false;
     }
   
-    
-    alert(`Form submitted successfully.`);
-    form.submit();
-  });
+    if (errorMessage !== '') {
+        document.getElementById('errorMessage').innerHTML = errorMessage;
+        return false;
+    } else {
+        alert(`Form submitted successfully.`);
+        form.submit();
+    }
+});
 
 window.onload = function() {
     let patientForm = document.getElementById(`patientForm`);
     patientForm.onsubmit = savePatientForm; 
+    
 }

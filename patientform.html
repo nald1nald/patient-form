@@ -23,9 +23,8 @@
         <form class="patientForm" action="" id="patientForm">
             <div class="row">
                 <div class="col-4">
-                    <label for="fName"><h5>First Name*</h5></label>
+                    <label for="fName"><h5>First Name*</h5></label><span id="fNameError"></span>
                     <input class="form-control" type="text" name="fName" id="fName">
-                    <span id="errorMessage"></span>
                     
                 </div>
 
@@ -35,16 +34,17 @@
                 </div>
 
                 <div class="col-4">
-                    <label for="lName"><h5>Last Name*</h5></label>
+                    <label for="lName"><h5>Last Name*</h5></label> 
+                    <span id="lNameError"></span>
                     <input class="form-control" type="text" name="lName" id="lName">
-                    <span id="errorMessage"></span>
                     
                 </div>
             </div>
 
             <div class="row mt-2">
                 <div class="col-12">
-                    <label for=""><h5>Address*</h5></label>
+                    <label for=""><h5>Address*</h5>
+                    </label> <span id="addressError"></span>
                     <input class="form-control" type="text" name="address" id="address">
                     
                 </div>
@@ -52,19 +52,26 @@
 
             <div class="row mt-2">
                 <div class="col-4">
-                    <label for=""><h5>Mobile Number</h5></label>
+                    <label for=""><h5>Mobile Number</h5>
+                        
+                    </label>
+                    <span id="errorMessage"></span>
                     <input class="form-control" type="number" name="mobileNum" id="mobileNum">
                     
                 </div>
 
                 <div class="col-4">
-                    <label for=""><h5>Birth Date*</h5></label>
+                    <label for=""><h5>Birth Date*</h5>
+                        <span id="errorMessage"></span>
+                    </label>
                     <input class="form-control" type="date" name="birthDate" id="birthDate">
                     
                 </div>
 
                 <div class="col-4" id="gender">
-                    <label for=""><h5>Gender*</h5></label><br>
+                    <label for=""><h5>Gender*</h5>
+                        <span id="errorMessage"></span>
+                    </label><br>
 
                     <input type="radio" name="gender" id="gender" value="male"> 
                     <label for="male">Male</label><br>
@@ -124,13 +131,14 @@
 
                     <div class="col-4" id="takeMeds">
                         <h6>Are you taking medications:</h6>
-                        <input type="radio" name="yesorno" id="yes" value="yes">
+
+                        <input type="radio" name="yesorno" id="yes" value="yes" onclick="medInputEnable()">
                         <label for="yes">Yes</label>
 
-                        <input type="radio" name="yesorno" id="no" value="no">
+                        <input type="radio" name="yesorno" id="no" value="no" onclick="medInputDisable()">
                         <label for="no">No</label>
 
-                        <input class="form-control" type="text" name="meds" id="meds" placeholder="If yes please specify the medications taken.">
+                        <input class="form-control" type="text" name="meds" id="meds" placeholder="If yes please specify the medications taken."  >
                     </div>
                 </div>
             </div>
