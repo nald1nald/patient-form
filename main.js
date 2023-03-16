@@ -1,3 +1,4 @@
+
 let patientArray = [];
 
 function savePatientForm() {
