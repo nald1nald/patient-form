@@ -1,5 +1,6 @@
 
-let patientArray = [];
+// let patientArray = [];
+// console.log(patientArray)
 
 function savePatientForm() {
     let fName = document.getElementById(`fName`).value;
@@ -51,7 +52,6 @@ function savePatientForm() {
     
     
     localStorage.setItem(Date.now(), JSON.stringify(patient));
-    
 }
 
 
