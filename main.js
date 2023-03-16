@@ -8,9 +8,9 @@ function savePatientForm() {
     let address = document.getElementById(`address`).value;
     let mobileNum = document.getElementById(`mobileNum`).value;
     let birthDate = document.getElementById(`birthDate`).value;
-    let gender = document.querySelector('input[name="gender"]:checked').value;
+    let gender = document.querySelector(`input[name="gender"]:checked`).value;
 
-    let medHistoryCheckboxes = document.querySelectorAll('input[name="medHistory"]');
+    let medHistoryCheckboxes = document.querySelectorAll(`input[name="medHistory"]`);
     let medHistory = [];
 
     for (let i = 0; i < medHistoryCheckboxes.length; i++) {
@@ -20,18 +20,18 @@ function savePatientForm() {
         }
     }
 
-    let currSymptomsSelect = document.getElementById('currSymptoms');
+    let currSymptomsSelect = document.getElementById(`currSymptoms`);
     let currSymptoms = [];
 
     for (let i = 0; i < currSymptomsSelect.selectedOptions.length; i++) {
         currSymptoms.push(currSymptomsSelect.selectedOptions[i].value);
     }
     
-    let takeMedsRadio = document.querySelector('input[name="yesorno"]:checked');
+    let takeMedsRadio = document.querySelector(`input[name="yesorno"]:checked`);
     let takeMeds = "";
 
-    if (takeMedsRadio && takeMedsRadio.value === "yes") {
-        takeMeds = document.getElementById("meds").value;
+    if (takeMedsRadio && takeMedsRadio.value === `yes`) {
+        takeMeds = document.getElementById(`meds`).value;
     }
 
     let patient = {
@@ -62,29 +62,29 @@ form.addEventListener('submit', function(event) {
     
     event.preventDefault();
     
-    if (fName.value.trim() === '') {
-      alert('First name is required.');
+    if (fName.value.trim() === ``) {
+      alert(`First name is required.`);
       fName.focus();
       return false;
     }
   
     
-    if (lName.value.trim() === '') {
-      alert('Last name is required.');
+    if (lName.value.trim() === ``) {
+      alert(`Last name is required.`);
       lName.focus();
       return false;
     }
 
 
-    if (address.value.trim() === '') {
-        alert('Address is required.');
+    if (address.value.trim() === ``) {
+        alert(`Address is required.`);
         address.focus();
         return false;
     }
   
     
-    if (birthDate.value.trim() === '') {
-      alert('Birth date is required.');
+    if (birthDate.value.trim() === ``) {
+      alert(`Birth date is required.`);
       birthDate.focus();
       return false;
     }
@@ -98,20 +98,20 @@ form.addEventListener('submit', function(event) {
       }
     }
     if (!isGenderSelected) {
-      alert('Gender is required.');
+      alert(`Gender is required.`);
       gender[0].focus();
       return false;
     }
   
     
-    if (mobileNum.value.trim() === '') {
-      alert('Mobile number is required.');
+    if (mobileNum.value.trim() === ``) {
+      alert(`Mobile number is required.`);
       mobileNum.focus();
       return false;
     }
   
     
-    alert('Form submitted successfully.');
+    alert(`Form submitted successfully.`);
     form.submit();
   });
 

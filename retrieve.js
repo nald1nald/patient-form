@@ -8,7 +8,7 @@ function retrievePatientInfo(patientId) {
 
 function openModal() {
     
-    let patientId = prompt("Enter patient ID:");
+    let patientId = prompt(`Enter patient ID:`);
     let patient = retrievePatientInfo(patientId);
     let modal = document.getElementById("myModal");
     let patientInfoElem = document.getElementById("patientInfo");
@@ -27,20 +27,20 @@ function openModal() {
         <br>Current Symptoms: ${patient.currSymptoms.join(", ")}
       `;
 
-      if (patient.takeMeds !== "") {
+      if (patient.takeMeds !== ``) {
         patientInfo += `<br>Taking Medications: ${patient.takeMeds}`;
       }
 
       patientInfoElem.innerHTML = patientInfo;
     } else {
-      patientInfoElem.innerHTML = "Patient not found.";
+      patientInfoElem.innerHTML = `Patient not found.`;
     }
     
-    modal.style.display = "block";
+    modal.style.display = `block`;
     
     
-    let closeBtn = modal.querySelector(".close");
-    closeBtn.addEventListener("click", function() {
+    let closeBtn = modal.querySelector(`.close`);
+    closeBtn.addEventListener(`click`, function() {
       modal.style.display = "none";
     });
   }
