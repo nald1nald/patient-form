@@ -8,6 +8,7 @@ function savePatientForm() {
     let address = document.getElementById(`address`).value;
     let mobileNum = document.getElementById(`mobileNum`).value;
     let birthDate = document.getElementById(`birthDate`).value;
+
     let gender = document.querySelector(`input[name="gender"]:checked`).value;
 
     let medHistoryCheckboxes = document.querySelectorAll(`input[name="medHistory"]`);
@@ -58,8 +59,7 @@ function savePatientForm() {
 // Form Validation
 let form = document.getElementById(`patientForm`);
 
-form.addEventListener('submit', function(event) {
-    
+form.addEventListener(`submit`, function(event) {
     event.preventDefault();
     
     if (fName.value.trim() === ``) {
@@ -83,10 +83,16 @@ form.addEventListener('submit', function(event) {
     }
   
     
-    if (birthDate.value.trim() === ``) {
-      alert(`Birth date is required.`);
-      birthDate.focus();
-      return false;
+    if (birthDateValue == 'Invalid Date') {
+        alert('Please enter a valid date.');
+        birthDateInput.focus();
+        return false;
+    }
+
+    if (birthDateValue < maxDate || birthDateValue > maxDate) {
+        alert('Birth date must be between January 1, 1900 and today.');
+        birthDateInput.focus();
+        return false;
     }
   
     
